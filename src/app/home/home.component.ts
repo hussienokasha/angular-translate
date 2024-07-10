@@ -14,18 +14,12 @@ export class HomeComponent {
   constructor(private translate: TranslateService) {
     this.currentLang = localStorage.getItem('language') ?? 'en';
     this.translate.use(this.currentLang);
-    this.setDirection(this.currentLang);
-
   }
 
   switchLanguage() {
     this.currentLang = this.currentLang === 'en' ? 'ar' : 'en';
     this.translate.use(this.currentLang);
-    this.setDirection(this.currentLang);
     localStorage.setItem('language',this.currentLang)
   }
-  setDirection(lang: string) {
-    const dir = lang === 'ar' ? 'rtl' : 'ltr';
-    document.documentElement.setAttribute('dir', dir);
-  }
+
 }
